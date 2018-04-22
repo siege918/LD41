@@ -1,0 +1,21 @@
+<svg width="200" height="375" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Hair Back</title>
+  <ellipse ry="52" rx="84" id="svg_1" cy="64.5" cx="100.5" stroke-opacity="null" stroke-width="null" stroke="null" fill="#894F3F"/>
+  <rect id="svg_2" height="109" width="167" y="65.5" x="17.5" stroke-opacity="null" stroke-width="null" stroke="null" fill="#894F3F"/>
+ </g>
+ <g>
+  <title>Body</title>
+  <ellipse stroke="null" ry="48.5" rx="77.000004" id="svg_4" cy="227" cx="101.499996" stroke-opacity="null" stroke-width="null" fill="#729C62"/>
+  <rect id="svg_5" height="154" width="152" y="226.5" x="26.5" fill-opacity="null" stroke-opacity="null" stroke-width="null" stroke="null" fill="#729C62"/>
+ </g>
+ <g>
+  <title>Head</title>
+  <ellipse stroke="null" ry="77.499995" rx="72" id="svg_3" cy="116.999995" cx="100.500003" stroke-opacity="null" stroke-width="null" fill="#FFAC8D"/>
+ </g>
+ <g>
+  <title>Hair Front</title>
+  <rect stroke="null" transform="rotate(-31.965024948120117 61.188991546630845,57.19407653808594) " id="svg_8" height="29.491506" width="86" y="42.448323" x="18.188993" fill-opacity="null" stroke-opacity="null" stroke-width="null" fill="#894F3F"/>
+  <rect stroke="null" transform="rotate(30 134.07595825195315,50.3325309753418) " id="svg_9" height="25.303847" width="83" y="37.680607" x="92.575962" fill-opacity="null" stroke-opacity="null" stroke-width="null" fill="#894F3F"/>
+ </g>
+</svg>

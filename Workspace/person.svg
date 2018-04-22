@@ -1,0 +1,27 @@
+<svg width="200" height="400" xmlns="http://www.w3.org/2000/svg">
+ <!--<g>
+  <title>background</title>
+  <rect fill="#fff" id="canvas_background" height="402" width="302" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>-->
+ <g>
+  <title>Hair Back</title>
+  <rect id="svg_8" height="97" width="168" y="98" x="65.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#894F3F" fill="#894f3f"/>
+  <ellipse stroke="#894F3F" ry="47.499999" rx="83.499997" id="svg_7" cy="90.499999" cx="149.999998" stroke-width="1.5" fill="#894f3f"/>
+ </g>
+ <g>
+  <title>Body</title>
+  <ellipse ry="40.5" rx="91" id="svg_3" cy="224.5" cx="152.5" stroke-width="1.5" stroke="#619e73" fill="#619e73"/>
+  <rect id="svg_5" height="176" width="184" y="224" x="61.5" stroke-width="1.5" stroke="#619e73" fill="#619e73"/>
+ </g>
+ <g>
+  <title>Head</title>
+  <ellipse stroke="#FFAC8D" ry="67.000001" rx="73" id="svg_1" cy="123.999999" cx="149.5" stroke-width="1.5" fill="#FFAC8D"/>
+ </g>
+ <g>
+  <title>Hair Front</title>
+  <path id="svg_6" d="m73.5,115l67.5,-24l81,25l-5,-55c0.5,0 -93.5,-15 -94.5,-15c-1,0 -42,35 -42.5,35c0.5,0 -6.5,34 -6.5,34z" stroke-width="1.5" stroke="#894F3F" fill="#894f3f"/>
+ </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg width="200" height="375" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-16" x="-706"/>
+  <ellipse fill="#894F3F" stroke="null" stroke-width="null" stroke-opacity="null" cx="100.5" cy="64.5" id="svg_1" rx="84" ry="52"/>
+  <rect fill="#894F3F" stroke="null" stroke-width="null" stroke-opacity="null" x="17.5" y="65.5" width="167" height="109" id="svg_2"/>
+  <ellipse fill="#729C62" stroke-width="null" stroke-opacity="null" cx="101.499996" cy="227" id="svg_4" rx="77.000004" ry="48.5" stroke="null"/>
+  <rect fill="#729C62" stroke="null" stroke-width="null" stroke-opacity="null" fill-opacity="null" x="26.5" y="226.5" width="152" height="154" id="svg_5"/>
+  <ellipse fill="#FFAC8D" stroke-width="null" stroke-opacity="null" cx="100.500003" cy="116.999995" id="svg_3" rx="72" ry="77.499995" stroke="null"/>
+  <rect fill="#894F3F" stroke-width="null" stroke-opacity="null" fill-opacity="null" x="18.188993" y="42.448323" width="86" height="29.491506" id="svg_8" transform="rotate(-31.965024948120117 61.188991546630845,57.19407653808594) " stroke="null"/>
+  <rect fill="#894F3F" stroke-width="null" stroke-opacity="null" fill-opacity="null" x="92.575962" y="37.680607" width="83" height="25.303847" id="svg_9" transform="rotate(30 134.07595825195315,50.3325309753418) " stroke="null"/>
+ </g>
+</svg>

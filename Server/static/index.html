@@ -1,0 +1,380 @@
+<html>
+	<script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script>function Queue(){var a=[],b=0;this.getLength=function(){return a.length-b};this.isEmpty=function(){return 0==a.length};this.enqueue=function(b){a.push(b)};this.dequeue=function(){if(0!=a.length){var c=a[b];2*++b>=a.length&&(a=a.slice(b),b=0);return c}};this.peek=function(){return 0<a.length?a[b]:void 0}};</script>
+	<script>
+		var backgroundImage = new Image();
+		backgroundImage.src = "/svg/background";
+	
+		var vsImage = new Image();
+		vsImage.src = "/svg/vs";
+		
+		var personImage = new Image();
+		personImage.src = "/svg/person";
+		
+		var p1image = new Image();
+		p1image.src = "/svg/person";
+		
+		var p2image = new Image();
+		p2image.src = "/svg/person";
+		
+		var datingBackground = new Image();
+		datingBackground.src = "/svg/dating-background";
+		
+		var bettingEnabled = true;
+		
+		var gameState = null;
+		
+		function generatePlayerString(player)
+		{
+			return "/person/" + player.hairstyle + "/" + player.haircolor + "/" + player.skincolor + "/" + player.bodystyle + "/" + player.bodycolor + "/" + player.bodycolor2;
+		}
+		
+		function draw()
+		{
+			var c = document.getElementById("gameplay-canvas");
+			var ctx = c.getContext("2d");
+		
+			if (bettingEnabled)
+			{
+				try { 
+					ctx.drawImage(backgroundImage, 0, 0);
+					
+					
+					ctx.drawImage(vsImage, c.width / 2 - vsImage.width / 4, c.height / 2 - vsImage.height / 4, vsImage.width / 2, vsImage.height / 2);
+					ctx.fillStyle = "#000000";
+					
+					if (!gameState)
+					{
+						//Player One Info
+						ctx.font = "30px Arial";
+						ctx.textAlign = "left";
+						ctx.fillText("Likes",30,50);
+						ctx.fillText("- Money",30, 85);
+						ctx.fillText("- Dogs",30, 120);
+						ctx.fillText("- Yachts",30, 155);
+						
+						ctx.fillText("Dislikes",230,50);
+						ctx.fillText("- Reddit",230, 85);
+						ctx.fillText("- Chocolate",230, 120);
+						ctx.fillText("- Science",230, 155);
+						
+						ctx.textAlign = "end"
+						ctx.fillText("Jessica", (c.width / 2) - (vsImage.width / 3), c.height / 2);
+						
+						//Player Two Info
+						ctx.font = "30px Arial";
+						ctx.textAlign = "left";
+						ctx.fillText("Likes",680,50);
+						ctx.fillText("- Money",680, 85);
+						ctx.fillText("- Dogs",680, 120);
+						ctx.fillText("- Yachts",680, 155);
+						
+						ctx.fillText("Dislikes",880,50);
+						ctx.fillText("- Reddit",880, 85);
+						ctx.fillText("- Chocolate",880, 120);
+						ctx.fillText("- Science",880, 155);
+						
+						
+						ctx.fillText("Seanica", (c.width / 2) + (vsImage.width / 3), c.height / 2);
+					}
+					else
+					{
+						var p1path = generatePlayerString(gameState.player1);
+						
+						if (p1path !== p1image.src)
+							p1image.src = p1path;
+					
+						//Player One Info
+						ctx.font = "30px Arial";
+						ctx.textAlign = "left";
+						ctx.fillText("Likes",30,50);
+						ctx.fillText("- " + gameState.player1.likes[0],30, 85);
+						ctx.fillText("- " + gameState.player1.likes[1],30, 120);
+						ctx.fillText("- " + gameState.player1.likes[2],30, 155);
+						
+						ctx.fillText("Dislikes",230,50);
+						ctx.fillText("- "  + gameState.player1.dislikes[0],230, 85);
+						ctx.fillText("- "  + gameState.player1.dislikes[1],230, 120);
+						ctx.fillText("- "  + gameState.player1.dislikes[2],230, 155);
+						
+						ctx.textAlign = "end"
+						ctx.fillText(gameState.player1.name, (c.width / 2) - (vsImage.width / 3), c.height / 2);
+						
+						
+						var p2path = generatePlayerString(gameState.player2);
+						
+						if (p2path !== p2image.src)
+							p2image.src = p2path;
+							
+						//Player Two Info
+						ctx.font = "30px Arial";
+						ctx.textAlign = "left";
+						ctx.fillText("Likes",680,50);
+						ctx.fillText("- " + gameState.player2.likes[0],680, 85);
+						ctx.fillText("- " + gameState.player2.likes[1],680, 120);
+						ctx.fillText("- " + gameState.player2.likes[2],680, 155);
+						
+						ctx.fillText("Dislikes",880,50);
+						ctx.fillText("- " + gameState.player2.dislikes[0],880, 85);
+						ctx.fillText("- "  + gameState.player2.dislikes[1],880, 120);
+						ctx.fillText("- "  + gameState.player2.dislikes[2],880, 155);
+						
+						
+						ctx.fillText(gameState.player2.name, (c.width / 2) + (vsImage.width / 3), c.height / 2);
+					}
+				}
+				catch (e) {
+					console.log(e.toString());
+				}
+			}
+			else
+			{
+				try {
+					ctx.drawImage(datingBackground, 0, 0);
+					ctx.lineWidth="4";
+					ctx.fillStyle="#FF0000";
+					
+					if (gameState.score > .5)
+						ctx.fillStyle="#00FF00";
+					
+					ctx.fillRect((c.width / 2) - 300, 50, 600 * gameState.score, 50);
+					ctx.rect(
+						(c.width / 2) - 300, //X
+						50, //Y
+						600, // Width
+						50); // Height
+					ctx.stroke();
+					
+				}
+				catch (e) {
+					
+				}
+			}
+			
+			
+			//Left player
+			ctx.drawImage(p1image, 50, 200);
+			//Right player
+			ctx.drawImage(p2image, c.width - personImage.width - 50, 200);
+			window.requestAnimationFrame(draw);
+		}
+		
+		$(function() {
+			window.requestAnimationFrame(draw);
+			Update();
+		});
+		
+		function Update()
+		{
+			$.get("/update",
+				function(data, status) {
+					var jsonData = JSON.parse(data);
+					
+					$("#time").html("" + jsonData.timeRemaining);
+					$("#odds").html("" + jsonData.oddsFor + ":" + jsonData.oddsAgainst);
+					
+					var betsHtml = "";
+					
+					for (var i = 0; i < jsonData.bets.length; i++)
+					{
+						var bet = jsonData.bets[i];
+						betsHtml += "<div>" + bet.username + " set their wager to $" + bet.amount +  " " + bet.direction + "</div>"
+					}
+					
+					$("#bet-area").html(betsHtml);
+					
+					if (jsonData.betsOpen)
+					{
+						$("#open-bets").show();
+						$("#closed-bets").hide();
+						
+						if (!BettingSongIsPlaying())
+						{
+							StartBettingSong();
+						}
+						
+						bettingEnabled = true;
+					}
+					else
+					{
+						$("#open-bets").hide();
+						$("#closed-bets").show();
+						
+						if (!DatingSongIsPlaying())
+						{
+							StartDatingSong();
+						}
+						
+						bettingEnabled = false;
+					}
+					
+					gameState = jsonData;
+				}
+			)
+			.error(function() {setTimeout(Update, 1000);})
+			.done(function() {
+				setTimeout(Update, 1000);
+			});
+		}
+	</script>
+	<script src="/js/musicloop.js"></script>
+	<style>
+		body {
+			margin: 0px;
+			overflow: hidden;
+			font-family: Arial;
+		}
+	
+		#container {
+			height: 720px;
+			width: 1280px;
+			background-color: black;
+		}
+		
+		#maincontent {
+			margin: 0px;
+			padding: 0px;
+			border: 0px;
+			height: 720px;
+			width: 1280px;
+		}
+		
+		#gameplay {
+			width: 1075px;
+			height: 100%;
+			background-color: hotpink;
+		}
+		
+		#bottom-bar {
+			height: 150px;
+			background-color: deeppink;
+		}
+		
+		#bets {
+			background-color: deeppink;
+			height: 564px;
+		}
+		
+		#closed-bets, #open-bets {
+			width: 100%;
+			height: 100%;
+		   -webkit-animation: color_change 1s infinite alternate;
+		   -moz-animation: color_change 1s infinite alternate;  
+		   -ms-animation: color_change 1s infinite alternate;  
+		   -o-animation: color_change 1s infinite alternate;  
+		   animation: color_change 1s infinite alternate;  
+		}
+		
+		
+		@-webkit-keyframes color_change {
+		  from { opacity: 1; }
+		  to { opacity: 0; }
+		}
+		@-moz-keyframes color_change {
+		  from { opacity: 1; }
+		  to { opacity: 0; }
+		}
+		@-ms-keyframes color_change {
+		  from { opacity: 1; }
+		  to { opacity: 0; }
+		}
+		@-o-keyframes color_change {
+		  from { opacity: 1; }
+		  to { opacity: 0; }
+		}
+		@keyframes color_change {
+		  from { opacity: 1; }
+		  to { opacity: 0; }
+		}
+    
+		td {
+			padding: 0px;
+		}
+		
+		#bottom-bar-table {
+			margin: 0px;
+			padding: 0px;
+			border: 0px;
+			height: 100%;
+			width: 100%;
+		}
+		
+		#high-scores
+		{
+			width: 25%;
+		}
+		
+		#bet-status {
+			width: 25%;
+		}
+		
+		#bet-instructions {
+			width: 50%;
+			font-weight: bold
+		}
+		
+		#info {
+			width: 25%;
+			font-size: 20px;
+			font-weight: bold;
+		}
+	
+		#open-bets {
+			width: 100%;
+			height: 100%;
+		}
+		
+		.scoreText {
+			font-size: 20px;
+			line-height: 8px;
+		}
+	
+	</style>
+	<body>
+		<div id="container">
+			<table id="maincontent">
+				<tr>
+					<td id="gameplay">
+						<canvas id="gameplay-canvas" width="1075" height="564"></canvas>
+					</td>
+					<td id="bets">
+						<div style="height: 100%;margin: 8px;">
+							<h1>Bets</h1>
+							<div id="bet-area"></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td id="bottom-bar" colspan="2">
+						<table id="bottom-bar-table">
+							<tr>
+								<td id="bet-status">
+									<img id="closed-bets" src="/svg/betsclosed" />
+									<img id="open-bets" style="display: none;" src="/svg/betsopen" />
+								</td>
+								<td id="info">
+									<p>Success Odds: </br> <span id="odds">1:1</span></p>
+									<p>Time remaining: <span id="time"></span></p>
+								</td>
+								<td id="bet-instructions">
+									<p>Commands:</p>
+									<p>"for X" - Bet $X that the date will go well</p>
+									<p>"against X" - Bet $X that the date will go poorly</p>
+									<p>"balance" - See your balance</p>
+								</td>
+								<!--<td id="high-scores">
+									<p id="high-score-header" class="scoreText">Highest Earners (this session)</p>
+									<p id="first-place" class="scoreText">1. Test Person - $4000</p>
+									<p id="second-place" class="scoreText">2. Test Person2 - $3000</p>
+									<p id="third-place" class="scoreText">3. Test Person3 - $2000</p>
+								</td>-->
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<!--<img src="/svg/person" />
+		<div id="commandarea"></div>-->
+	</body>
+</html>
