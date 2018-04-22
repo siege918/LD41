@@ -1,4 +1,7 @@
 
 Docker/buildscript.sh
+Docker/buildscript.sh
 Docker/Dockerfile
 Docker/startScreen.sh
+Server/start.sh
+Server/start.bat
